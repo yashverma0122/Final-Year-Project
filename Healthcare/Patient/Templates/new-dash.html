@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Patient-Dashboard.css' %}"> 
+    {% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}"/>
+    {% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="{% static 'context-menu.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'context-menu.css' %}">
+
+   <script>
+            var tableContextMenu = null;
+
+            $(document).ready(function(){
+                var options = {
+                    openCallBack: function(contextMenu) {
+                        contextMenu.disableMenuItem("Warning Item");
+                    }
+                };
+                tableContextMenu = new ContextMenu("context-menu-items", menuItemClickListener);
+                tableContextMenu.disableMenuItem(1);
+            });
+
+            function menuItemClickListener(menu_item, parent)
+            {
+                
+                console.log("Menu Item Clicked: " + menu_item.text() + "\nDoctor ID " + parent.attr("data-row-id"));
+
+                console.log("Doctor ID: " + {{ doctor_assigned.doctor.id }})  
+
+                triggerUnenroll({{ doctor_assigned.doctor.id }})     
+
+                console.log("Function triggered")       
+            }
+        </script>
+
+<style type="text/css">
+    .doc-img {
+    
+        height: 100px;
+        width: 100px;
+        margin-top: -20px;
+        margin-left: -10px;
+       
+      }
+
+    p{
+        margin-top: 12px;
+        margin-bottom: 1rem;
+    }
+
+    #dots{
+
+          margin-left: 5px;
+    margin-top: 5px;
+    font-size: 25px;
+
+
+    }
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+     <div class="context-menu-container" id="context-menu-items">
+            <ul>
+                <li class="danger" id="{{ doctor_assigned.doctor.id }}">Unenroll</li>
+            </ul>
+        </div>
+
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="">Project Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'Home:Home'%}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'Patient:Profile' %}">Update Profile</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'Patient:logout' %}">Logout</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+   
+         
+    <div class="main">
+        <div class="header">
+            <div class="patient-name">
+                <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+                  <h2 class="account-heading">{{ user.full_name }}</h2>
+            </div>
+            <div class="add-btn">
+              
+                <!-- <button onclick="location.href='{% url 'Patient:Docselection'%}'" type="button" ><i class="fas fa-plus-circle"></i> Add New</button> -->
+                <a href="{% url 'Patient:Docselection' %}"><button><i class="fas fa-plus-circle"></i> Add Doctor</button></a>
+            </div>
+            <div class="nav">
+                <input type="button" id="btn1" value="Patient Info" onclick="forfirst()">
+                <input type="button" id="btn2" value="Latest Daignosis" onclick="forsecond()">
+                <input type="button" id="btn3" value="Prescriptions" onclick="forthird()">
+            </div>
+        </div>
+
+        <div class="content1" id="p-info">
+            <div class="doc">
+               
+                {% if doctor_assigned != None %}
+                    <label for="">Doctor</label>
+                        <span></span>
+                         
+                        <div class="doctor">
+                        <div class="icon"><img class="rounded-circle doc-img" src="{{ doc_image }}"></div>
+                         
+                        <div class="doctor-name">
+                         
+                            <h3>{{ doctor_assigned.doctor.full_name }}</h3>
+                            <p>{{ doctor_assigned.doctor.columbiaasia_doctor.education }}</p>
+  
+                        </div>
+                         <div id="dots">
+                           
+                           
+                          <h3 class="context-menu" data-container-id="context-menu-items"></h3>
+
+                           
+                           </div>
+
+                    </div>
+
+                {% else %}
+
+                    <label for="">No Doctor Assigned</label>
+                        <span style="margin-top: 73px;"></span>
+                        <div class="doctor">
+                            <div class="icon"><i class="fa fa-user-md"></i></div>
+                            <p style="font-weight: 800;margin-left: 30px;margin-top: 30px;margin-right: 30px;">Click on "Add Doctor" to send a request to a doctor</p>
+                         </div>
+
+                    
+                {% endif %}
+                
+            </div>
+
+            <div class="gen-info">
+                <label for="" id="heading2">General Information</label>
+                <span></span>
+                <div class="gen-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+                            <tr>
+                                <td class="data1">Age</td>
+                                <td>{{ user.patient_medical_history.age }} Years Old</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Gender</td>
+                                <td>{{ user.patient_medical_history.gender }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Address</td>
+                                <td>{{ user.patient_medical_history.address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Contact Number</td>
+                                <td>{{ user.patient_medical_history.contact_no }}</td>                        
+                            </tr>
+                            <tr>
+                                <td class="data1">Emergency Contact</td>
+                                <td>{{ user.patient_medical_history.emergency_contact }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Height</td>
+                                <td>{{ user.patient_medical_history.height }} cm</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Weight</td>
+                                <td>{{ user.patient_medical_history.weight }} kg</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Blood Type</td>
+                                <td>{{ user.patient_medical_history.blood_group }}</td>
+                            </tr>    
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="med-info">
+                <label for="" id="heading3">Medical Information</label>
+                <span></span>
+                <div class="med-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+
+                            <tr>
+                                <td class="data1">Do I drink?</td>
+                                <td>{{ user.patient_medical_history.alchohol_consumption }}</td>                        
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Do I Smoke?</td>
+                                <td>{{  user.patient_medical_history.smoking_habit }}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Previous Illnesses</td>
+                                <td>{{ user.patient_medical_history.previous_illness }}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Drug Allergies</td>
+                                <td>{{  user.patient_medical_history.drug_allergies }}</td>
+                            </tr>
+                           
+                            <tr>
+                                <td class="data1">Current Medications</td>
+                                <td>{{  user.patient_medical_history.current_medications }}</td>
+                            </tr> 
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--=================================================================================-->
+
+        <div class="latest-diagnosis" id="l-diagnosis">
+            
+        <label for="">Latest Diagnosis</label>
+            <div class="Neurology various-depts">
+
+{% if diagnosis != None %}
+
+        {% for diag in diagnosis %}
+
+                <div class="first">
+                    <div class="bywhom">
+                        <div class="bywhom-info">
+                            <h4 id="Pat-name">Patient Name<h4>
+                           <p style="font-size: 15px; font-weight:800">{{ diag.patient.full_name }}</p> 
+                            <h4>Doctor Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.doctor.full_name }}</p> 
+
+                            <h4>Timestamp<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.timestamp }}</p> 
+                            <p style="font-size: 12px;">---------</p>
+
+                            <h4>Additional Comments<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.additional_comments }}</p> 
+                        </div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Diagnosis<h4>
+                        <p style="font-size: 20px; margin-left:0px">{{ diag.diagnosis }}</p>
+                        <h4>Description</h4>
+                        <p style="font-size: 20px;"> {{ diag.diagnosis_description }}</p>                        
+                        <h4>Doctor Advice</h4>
+                        <p style="font-size: 20px;">{{ diag.doctor_advice }}</p>
+                    </div>
+                </div>
+
+     {% endfor %}
+
+    {% else %}
+  <div class="row">
+        <div class="col-md-10" style="margin-left:110px; margin-top:25px; margin-bottom:25px; ">
+   <div class="alert alert-primary">
+    <p style="font-size: 20px; text-align:center; ">Medical History has not been updated yet.</p>
+    </div>
+    </div>
+    </div>
+
+
+    {% endif %}
+
+
+            </div>
+        </div>
+
+
+        <!--=================================================================================-->
+
+        <div class="prescription" id="prescrips">
+         
+
+            <label for="">Prescriptions</label>
+            <div class="Neurology various-depts">
+
+    {% if prescriptions != None %}
+
+        {% for prescription in prescriptions %}
+
+                <div class="second">
+                    <div class="bywhom">
+                        <div class="bywhom-info">
+                            <h4 id="Pat-name">Patient Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.patient.full_name }}</p> 
+                            <h4>Doctor Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.doctor.full_name }}</p> 
+                            
+                            <h4>Valid Until<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.valid_until}}</p> 
+
+                            <h4>Timestamp<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.timestamp }}</p> 
+                          
+                           
+                             
+                        </div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Prescription ID<h4>
+                        <p style="font-size: 20px; margin-left:0px">{{ prescription.id }}</p>
+                        <h4>Prescription</h4>
+                        <p style="font-size: 20px;"> {{ prescription.prescription }}</p>
+                        <h4>Additional Advice</h4>
+                        <p style="font-size: 20px;">{{ prescription.additional_advice }}</p>
+                    </div>
+                </div>
+
+
+        {% endfor %}
+
+    {% else %}
+  <div class="row">
+        <div class="col-md-10" style="margin-left:110px; margin-top:25px; margin-bottom:25px; ">
+   <div class="alert alert-danger">
+    <p style="font-size: 20px; text-align:center; ">No Prescriptions yet.</p>
+    </div>
+    </div>
+</div>
+
+
+    {% endif %}
+            </div>
+        </div>
+
+        <script src="{% static 'Patient-Dashboard.js' %}"></script>
+
+       
+    
+        
+    </div>
+
+     {% include 'snippets/unenroll.html' %}
+
+     <script type="text/javascript">
+    
+    
+        function onDoctorUnenrolled(){
+			location.reload();
+		}
+	
+	
+	
+		function triggerUnenroll(doctor_id){
+			unenrollDoctor(doctor_id, onDoctorUnenrolled)
+		}
+
+    </script>
+
+
+</body>
+</html>

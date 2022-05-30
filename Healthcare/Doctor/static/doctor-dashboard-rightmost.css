@@ -1,0 +1,459 @@
+*{
+    font-family: 'Nunito', sans-serif;
+}
+
+.overall .rightmost{
+    width: 77.5%;
+    height: 100%;
+    margin-left: 22.5%;
+    background-color: white;
+}
+.header{
+    width: 100%;
+    height: 25vh;
+    background-color: #FAFAFA;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.header .patient-name{
+    width: auto;
+    margin-left: 5%;
+    margin-top: 20px;
+    /*background-color: white;*/
+    position: absolute;
+    display: flex;
+}
+
+.header .patient-name .photo{
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color:#ffbb33;
+}
+
+.header .patient-name h2{
+    margin-left: 20px;
+    font-size: 26px;
+    position: relative;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.header .add-btn{
+    float:right;
+    /*background-color: white;*/
+    margin-top: 45px;
+    margin-right: 5%;
+
+}
+
+.header .add-btn button{
+    font-size: 16px;
+    color: black;
+    padding: 8px 15px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffbb33;
+}
+
+#chat{
+    margin-right: 20px;
+}
+
+.header .add-btn button:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 1px 2px rgba(0, 0 ,0, 0.8);
+}
+
+.header .nav{
+    width: 39%;
+    margin-top: 120px;
+    margin-left: 40%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: #e0ebeb;
+    border-radius: 5px;
+    padding: 3px 2px;
+}
+
+.header .nav input{
+    margin: 0;
+    width: 33%;
+    padding: 4px 30px; 
+    border-radius: 5px;
+    font-weight:600;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.header .nav input:hover{
+    background-color: #0000;
+}
+
+.content1{
+    width: 100%;
+    height: auto;
+    /*background-color:slateblue;*/
+}
+
+.content1 .doc{
+    width: 100%;
+    height: 230px;
+    /*background-color:tomato;*/
+}
+
+.content1 .doc label{
+    font-size: 24px;
+    letter-spacing: 1px;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 10%;
+}
+
+.content1 .doc span{
+    width: 60%;
+    height: 2px;
+    margin-left: 10%;
+    margin-top: 70px;
+    background: #0000; 
+    position: absolute;
+}
+
+.content1 .doc .doctor{
+    width: 25%;
+    height: 120px;
+    background-color: #e0ebeb;
+    margin-left: 10%;
+    margin-top: 90px;
+    position: absolute;
+    border-radius: 20px;
+    display: flex;
+}
+
+.content1 .doc .doctor .icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /*background-color:#ffbb33;*/
+    margin-top: 30px;
+    margin-left: 10%;
+}
+
+.content1 .doc .doctor .icon i{
+    font-size: 2.5rem;
+    margin-left: 13px;
+    margin-top: 6px;
+}
+
+.content1 .doc .doctor .doctor-name{
+    margin-left: 15%;
+    margin-top: 25px;
+    line-height: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.content1 .doc .doctor .doctor-name p{
+    font-size: 12px;
+}
+
+.content1 .gen-info{
+    width: 100%;
+    height: 350px;
+    /*background-color:violet;*/
+}
+
+.content1 .gen-info label{
+    font-size: 24px;
+    letter-spacing: 1px;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 10%;
+}
+
+.content1 .gen-info span{
+    width: 60%;
+    height: 2px;
+    margin-left: 10%;
+    margin-top: 60px;
+    background: #0000; 
+    position: absolute;
+}
+
+.content1 .gen-info .gen-info-table{
+    margin-top: 90px;
+    margin-left: 10%;
+    position: absolute;
+}
+
+.content1 .gen-info .gen-info-table table td{
+    width: 600px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #0000;
+    font-size: 14px;
+    }
+    /*tbody tr:nth-child(even) {
+    background: #e8e7e1;
+    }*/
+
+.content1 .gen-info .gen-info-table .data1{
+    color: #85adad;
+}
+
+.content1 .med-info{
+    width: 100%;
+    height: 350px;
+    /*background-color:yellowgreen;*/
+}
+
+.content1 .med-info label{
+    font-size: 24px;
+    letter-spacing: 1px;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 10%;
+}
+
+.content1 .med-info span{
+    width: 60%;
+    height: 2px;
+    margin-left: 10%;
+    margin-top: 60px;
+    background: #0000; 
+    position: absolute;
+}
+
+.content1 .med-info .med-info-table{
+    margin-top: 90px;
+    margin-left: 10%;
+    position: absolute;
+}
+
+.content1 .med-info .med-info-table table td{
+    width: 600px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #0000;
+    font-size: 14px;
+    }
+    /*tbody tr:nth-child(even) {
+    background: #e8e7e1;
+    }*/
+
+.content1 .med-info .med-info-table .data1{
+    color: #85adad;
+}
+
+/*===============================================================*/
+/*===============================================================*/
+
+.latest-diagnosis{
+    width: 100%;
+    height: auto;
+   /*background: coral;*/
+}
+
+.latest-diagnosis label{
+    font-size: 28px;
+    letter-spacing: 1px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 10%;
+    text-decoration: underline solid black;
+}
+
+
+.latest-diagnosis .various-depts{
+    width: 100%;
+    height: auto;
+    /*background-color:tomato;*/
+    padding-bottom: 20px;
+}
+
+.latest-diagnosis .various-depts .first{
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    margin-top: 40px;
+    border-radius: 20px;
+    background-color: #9EB53C;
+    position: relative;
+    display: flex;
+}
+
+.latest-diagnosis .various-depts .first .bywhom{
+    width: 28%;
+    height: auto;
+    background-color: #E3EBEB;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    border-radius: 20px 20px 20px 20px;
+    position: relative;
+}
+
+.latest-diagnosis .various-depts .first .bywhom-info{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 3px;
+    text-align: center;
+    position: absolute;
+}
+
+.latest-diagnosis .various-depts .first span{
+    width: 1px;
+    height: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: black;
+    position: absolute;
+    margin-left: 31%;
+}
+
+.latest-diagnosis .various-depts .first .paragraph{
+    width: 66%;
+    height: auto;
+    margin-left: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #E3EBEB;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.latest-diagnosis .various-depts .first .bywhom-info{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 3px;
+    text-align: center;
+    position: absolute;
+}
+
+.latest-diagnosis .various-depts .first .bywhom-info h4{
+    font-size: 16px;
+}
+
+.latest-diagnosis .various-depts .first .paragraph p{
+    font-size: 13px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.latest-diagnosis .various-depts .first .paragraph h4{
+   
+    margin: 30px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+
+
+/*===============================================================*/
+/*===============================================================*/
+
+
+.prescription{
+    width: 100%;
+    height: auto;
+   /*background: coral;*/
+}
+
+.prescription label{
+    font-size: 28px;
+    letter-spacing: 1px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 10%;
+    text-decoration: underline solid black;
+}
+
+
+.prescription .various-depts{
+    width: 100%;
+    height: auto;
+    /*background-color:tomato;*/
+    padding-bottom: 20px;
+}
+
+.prescription .various-depts .second{
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    margin-top: 40px;
+    border-radius: 20px;
+    background-color: #ffbb33;
+    position: relative;
+    display: flex;
+}
+
+.prescription .various-depts .second .bywhom{
+    width: 28%;
+    height: auto;
+    background-color: #E3EBEB;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    border-radius: 20px 20px 20px 20px;
+    position: relative;
+}
+
+.prescription .various-depts .second .bywhom-info{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 3px;
+    text-align: center;
+    position: absolute;
+}
+
+.prescription .various-depts .second span{
+    width: 1px;
+    height: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: black;
+    position: absolute;
+    margin-left: 31%;
+}
+
+.prescription .various-depts .second .paragraph{
+    width: 66%;
+    height: auto;
+    margin-left: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #E3EBEB;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.prescription .various-depts .second .bywhom-info{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    line-height: 3px;
+    text-align: center;
+    position: absolute;
+}
+
+.prescription .various-depts .second .bywhom-info h4{
+    font-size: 16px;
+}
+
+.prescription .various-depts .second .paragraph p{
+    font-size: 13px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.prescription .various-depts .second .paragraph h4{
+   
+    margin: 30px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+

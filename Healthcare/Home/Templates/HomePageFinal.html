@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'HomePageFinal.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'HomePageFinal-2.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+    {% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.css' %}"/>
+    {% endblock %}
+
+    <style type="text/css">
+
+    .become-memeber{
+
+        font-size: 19px;
+    }
+    
+    .become-memeber a{
+
+    background: transparent;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    }
+
+    .become-memeber a:hover{
+    color: rgba(255, 255, 255, 0.5);
+    }
+
+    .submit a {
+    background: transparent;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    }
+
+    .submit a:hover{
+    color: rgba(255, 255, 255, 0.5);
+    }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="upper">
+        <div class="navigation">
+            <div class="logo"></div>
+            <div class="nav-btn-set1">
+                {% comment %} <a href="#">Home</a> {% endcomment %}
+                <a href="#feature_block">Features</a>
+                <a href="#Pricing_block">Pricing</a>
+                <a href="#Aboutus_block">About Us</a>
+            </div>
+            <!--===========================================================================-->
+            <div class="contact-details">
+                <div class="become-memeber">
+                  <a href="{% url 'Home:BecomeAMember' %}">Become a Member</a>
+                </div>
+            </div>
+            <!--===========================================================================-->
+            <div class="slider">
+                <ul class="slider-list">
+                    <li class="slider-list__item slider-list__item_active"
+                   
+                        style="background-image: url( {% static 'images/robina-weermeijer-Pw9aFhc92P8-unsplash.jpg' %})"></li>
+                  
+                    <li class="slider-list__item" style="background-image: url( {% static 'images/jonathan-borba-v_2FRXEba94-unsplash.jpg' %} )"></li>
+                    <li class="slider-list__item" style="background-image: url({% static 'images/pixpoetry-GeV0KRf8WVA-unsplash.jpg' %} )"></li>
+                    <li class="slider-list__item" style="background-image: url( {% static 'images/slide-image4.jpg' %} )"></li>
+                </ul>
+                <div class="slider__nav-bar"><a class="nav-control"></a><a class="nav-control"></a><a
+                        class="nav-control"></a><a class="nav-control"></a></div>
+                <div class="slider__controls"><a class="slider__arrow slider__arrow_prev"></a><a
+                        class="slider__arrow slider__arrow_next"></a></div>
+            </div>
+            <div class="header-line">   
+                <h2>Every community, every neighborhood, every life whole and healthy.</h2>
+            </div>
+        </div>
+    </div>
+    <!--===========================================================================-->
+    <!--Lower Section-->
+    <div class="lower">
+        <div class="btns">
+            <!--First block-->
+            <div class="first">
+                <div class="front"></div>
+                <div class="back">
+                    <div class="content-back">
+                        <i class="fas fa-user-injured" style="font-size: 5rem; margin-top: 30px;"></i>
+                          <h2>For Patients</h2>
+                        <span>Putting patients above everything</span>
+                        <br>
+                        <button class="submit">
+                            <a href="{% url 'Patient:login' %}">Sign In</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--Second block-->
+            <div class="second">
+                <div class="front"></div>
+                <div class="back">
+                    <div class="content-back">
+                        <i class="fa fa-user-md" style="font-size: 5rem; margin-top: 30px;"></i>
+                        <h2>For Doctors</h2>
+                        <span>Dedicated to healing,to provide a possible cure</span>
+                        <br>
+                        <button class="submit">
+                            <a href="{% url 'Doctor:Login' %}">Sign In</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--Third block-->
+            <div class="third">
+                <div class="front"></div>
+                <div class="back">
+                    <div class="content-back">
+                        <i class="fas fa-hospital" style="font-size: 5rem; margin-top: 30px;"></i>
+                        <h2>For Hospitals and Clinics</h2>
+                        <span>The Highest Quality Healthcare</span>
+                        <br>
+                        <button class="submit">
+                            <a href="http://127.0.0.1:8000/ColumbiaAsia-admin/">Sign In</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="questions">
+                <div class="questions-patient">
+                    <h2>Patient</h2>
+                </div>
+                <div class="questions-doctor">
+                    <h2>Doctor</h2>
+                </div>
+                <div class="questions-hospital">
+                    <h2>Hospitals & Clinics</h2>
+                </div>
+            </div>
+        </div>
+        <!--===========================================================================-->
+        <div class="features">
+            <div class="features-heading" id="feature_block">
+                <h2>Our Key Features</h2>
+            </div>
+            <div class="features-cont">
+                <div class="feature-box" id="start">
+                    <div class="feature-icon">1</div>
+                    <div class="feature-content">
+                        <h3>Privacy</h3>
+                        <p>Data privacy and security has always served as one of the founding philosophies of ProjectHealth, 
+                            and we go to great lengths to safeguard the confidentiality and integrity of our users.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">2</div>
+                    <div class="feature-content">
+                        <h3>Connect</h3>
+                        <p>We understand healthcare goes beyond everything. It’s about the deep connection between 
+                            doctors and patients that leads to continuous care and sustained, better outcomes.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">3</div>
+                    <div class="feature-content">
+                        <h3>Trust</h3>
+                        <p>ProjectHealth works on trust. We are aware of the responsibility placed on us. 
+                            We always have and always will do everything we possibly can to uphold this trust.</p>
+                    </div>
+                </div>
+                <div class="feature-box" id="end">
+                    <div class="feature-icon">4</div>
+                    <div class="feature-content">
+                        <h3>Transparency</h3>
+                        <p>We believe in full disclosure. We believe in communicating openly and honestly, 
+                            and holding ourselves to the highest ethical standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--===========================================================================-->
+        <div class="pricing">
+            <div class="pricing-table" id="Pricing_block">
+                <div class="pricing-heading">
+                    <h2>Pricing Scheme</h2>
+                </div>
+                <div class="pricing-card" id="first-card">
+                    <i class="fas fa-paper-plane" style="font-size: 3rem; margin-top: 20px;"></i>
+                    <h2 class="pricing-card-header">Basic</h2>
+                    <div class="price"><sup>Rs</sup>3,000<span>/MO</span></div>
+                    <ul>
+                        <li><strong>1</strong> Domain Name</li>
+                        <li><strong>3</strong> Doctors</li>
+                        <li><strong>50</strong> Patients</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card" id="second-card">
+                    <i class="fas fa-plane-departure" style="font-size: 3rem; margin-top: 20px;"></i>
+                    <h2 class="pricing-card-header">Standard</h2>
+                    <div class="price"><sup>Rs</sup>10,000<span>/MO</span></div>
+                    <ul>
+                        <li><strong>1</strong> Domain Name</li>
+                        <li><strong>15</strong> Doctors</li>
+                        <li><strong>200</strong> Patients</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card" id="third-card">
+                    <i class="fas fa-rocket" style="font-size: 3rem; margin-top: 20px;"></i>
+                    <h2 class="pricing-card-header">Premium</h2>
+                    <div class="price"><sup>Rs</sup>30,000<span>/MO</span></div>
+                    <ul>
+                        <li><strong>1</strong> Domain Name</li>
+                        <li><strong>100</strong> Doctors</li>
+                        <li><strong>1000</strong>Patients</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--===========================================================================-->
+        <div class="aboutus" id="Aboutus_block">
+            <div class="aboutus-blurimage">
+                <h1>Quality HealthCare Made Simple</h1>
+                <br>
+                <br>
+                <p id="first-ptag">ProjectHealth is on a mission to make quality healthcare affordable and accessible for over a billion+ Indians. 
+                    We believe in empowering our users with the most accurate, comprehensive, and curated information and care, 
+                    enabling them to make better healthcare decisions.</p>
+                <p>It is the journey that takes you to new destinations every day with endless possibilities of life on the 
+                    back of happiness, energy, and hope. Practo wants to make this journey easy for every Indian and help 
+                    them live healthier and longer lives.</p>
+                <p>Ensuring access to quality healthcare comes with a lot of responsibility—towards both our doctor partners as 
+                    well as our patients. We recognize and appreciate the trust placed in us by doctors and patients. 
+                    This inspires us to do our best, and we continue to do everything we can to uphold it.
+                    Our guiding principles form the core of what we do and help us honour the trust and confidence reposed in us by our
+                     doctors and patients. Through these central tenets, we have been able to differentiate between the right and the wrong, 
+                     every day.</p>
+                <p>ProjectHealth takes issues relating to data confidentiality, disclosure, security, and protection very seriously. Seeking permission from patients, doctors, and establishments before collecting or using any information enables ProjectHealth users to have full control over data:
+                    <ul>
+                        <li><b>For consumers: </b>As per our privacy policy, we ask for permission before sending any messages or promotional content. Consumers can also change their communication preferences any time they want</li>
+                        <li><b>For establishments: </b>Only doctors—and NOT ProjectHealth—can trigger a communication with their walk-in patients. In line with our privacy policy, doctors also need to seek permission from their patients before sending out any ProjectHealth-related communication</li>
+                    </ul>
+                </p>
+                <p>
+                    Doctors and establishments looking to get listed on ProjectHealth are required to follow a strict verification process:
+                    <ul>
+                        <li>Authentication of the medical practitioners' academic certificates with the respective medical council website. This is done to ascertain their qualifications.</li>
+                        <li>Verification of each doctor's Medical Registration Number, with the respective state or national medical/dental/AYUSH council registries</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <!--===========================================================================-->
+        <div class="footer">
+            <div class="details">
+                <div class="phone">
+                    <i class="fas fa-phone-alt" id="phone"></i>
+                    <p class="icon-text">91356XXXXX</p>
+                </div>
+                <span class="span-bottom"></span>
+                <div class="email">
+                    <i class="fas fa-envelope" id="email"></i>
+                    <p class="icon-text">Project_Health@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'HomePageFinal.js' %}"></script>
+    <script>
+        
+        let url = document.location.hash;
+        
+        window.onload = function(){
+            if(url.length != 0){
+                window.location.replace("./HomePageFinal.html");
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+

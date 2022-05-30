@@ -1,0 +1,138 @@
+body{
+    background-image: url(../myimages/piron-guillaume-y6aFH6ZhI7s-unsplash.jpg);
+    background-size: 100% 100vh;
+    padding: 0;
+    margin: 0;
+    /*justify-content: center;*/
+    display: flex;
+}
+
+.content{
+    width: 900px;
+    height: 550px;
+    background: linear-gradient(rgba(43, 64, 13, 0.9),rgba(168, 194, 86, 0.8));
+    position: relative;
+    margin-top: 100px;
+    margin-left: 600px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);
+}
+
+.form{
+    width: 400px;
+    height: 650px;
+    background: rgba(245, 241, 241, 0.603);
+    top: -50px;
+    margin-left: 50px;
+    position: absolute;
+    box-shadow: 0px -2px 7px rgba(0, 0, 0, 0.5), 3px 4px 9px rgba(0, 0, 0, 0.8);
+    font-family: 'Nunito', sans-serif;
+}
+
+.form h2{
+    width: 60%;
+    font-size: 30px;
+    margin-left: 20%;
+    margin-bottom: 100px;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid black;
+}
+
+label{
+    display: block;
+    width: 260px;
+    margin: 25px auto 0;
+    text-align: center;
+}
+
+label span{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #505f75;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid black;    
+    text-align: center;
+    
+}
+
+button{
+    display: block;
+    width: 260px;
+    font-size: 15px;
+    margin: 60px auto;
+    margin-left: 72px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: white;
+    background-image: linear-gradient(to left, #7579ff, #b224ef);
+}
+
+.submit:hover{
+    background: -webkit-linear-gradient(left, #009933, #ffff66);
+}
+
+.forget-pass{
+    width: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 20px;
+    margin-top: 100px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.forget-pass:hover{
+    color: red;
+}
+
+.text-content{
+    width: 450px;
+    height: 250px;
+    /*background-color: coral;*/
+    position: absolute;
+    right:0;
+}
+
+.text-content h2{
+    width: 90%;
+    font-size: 45px;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 5%;
+    text-transform: uppercase;
+    color: #eee5e9;
+    font-family: 'Nunito', sans-serif;
+}
+
+.quote{
+    width: 450px;
+    height: 250px;
+    position: absolute;
+    right:0;
+    bottom: 0;
+}
+
+.quote p{
+    width: 70%;
+    margin-left: 15%;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    color: #ffff66;
+    font-family: 'Nunito', sans-serif;
+}
+
+

@@ -1,0 +1,13 @@
+asgiref==3.3.1
+click==7.1.2
+coverage==5.5
+Django==3.1.7
+django-crispy-forms==1.11.2
+django-jsonview==2.0.0
+django-static-fontawesome==5.14.0.0
+djangorestframework==3.12.2
+Pillow==8.1.1
+pytz==2021.1
+sqlparse==0.4.1
+svgwrite==1.4.1
+Tree==0.2.4

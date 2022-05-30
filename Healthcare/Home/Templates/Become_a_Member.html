@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>Become a Member</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'hospital_login.css' %}">
+
+</head>
+<body>
+  
+    
+  <div class="cont">
+    <div class="form sign-in">
+    <h2>Don't have an account with us yet?</h2>
+      <img src="{% static 'images/undraw_Login_re_4vu2.png' %}" style="display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;">
+  
+    </div>
+    
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up">
+          <h2>Become a partner today!
+          </h2>
+          <p>Join us to a experience a whole new world of Healthcare.</p>
+        </div>
+        <div class="img-text m-in">
+          <h2>We're glad you're interested.</h2>
+          <p>Go ahead and tell us about your institution. We'll get in touch with you!</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Become a Partner</span>
+          <span class="m-in">Back</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+      <form method="POST">
+        {% csrf_token %}
+        <h2>Contact Us</h2>
+        {% comment %} <label>
+          <span>Name of Institution</span>
+          <input type="text">
+        </label>
+        <label>
+          <span>Email ID</span>
+          <input type="email">
+        </label>
+        <label>
+          <span>Phone Number</span>
+          <input type="text">
+        </label>
+        <label>
+          <span>How did you get to know about us?</span>
+          <input type="text">
+        </label> {% endcomment %}
+         <label>
+         {% for field in form %}
+       
+        {{ field.label_tag }}
+        {{field}}
+       
+        {% endfor %}
+        </label>
+        <button type="submit" class="submit">Click to Become a Member</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript" src="{% static 'hospital_login.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+body{
+    background-image: url(../myimages/yair-mejia-JZl0Bdrz8Ig-unsplash.jpg);
+    background-size: 100% 100vh;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    display: flex;
+}
+
+.content{
+    width: 900px;
+    height: 550px;
+    background-color: rgba(150, 150, 150, 0.2);
+    position: relative;
+    margin-top: 100px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);
+}
+
+.form{
+    width: 640px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    font-family: 'Nunito', sans-serif;
+}
+
+h2{
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 25px;
+}
+  
+label{
+    display: block;
+    width: 260px;
+    margin: 50px auto 0;
+    text-align: center;
+}
+  
+label span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #3d444e;
+    text-transform: uppercase;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+    text-align: center;
+    font-family: 'Nunito', sans-serif; 
+}
+  
+button{
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+  
+.submit{
+    margin-top: 70px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    background: -webkit-linear-gradient(left, #ff3300, #e65c00);
+}
+  
+.submit:hover{
+    background: -webkit-linear-gradient(left, #e65c00, #ff3300);
+}
+
+.img-content{
+    width: 260px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: url(../myimages/wonderlane-UN4uATA92rk-unsplash.jpg);
+    background-size: 100% 100%;
+}

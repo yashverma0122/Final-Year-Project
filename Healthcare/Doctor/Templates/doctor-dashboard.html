@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    {% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}"/>
+    {% endblock %}
+   
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor-dashboard.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor-dashboard-rightmost.css' %}"> 
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'docmain.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style type=text/css>
+   
+    #Hello{ color: #363636; font-family: "Great Vibes", cursive; font-size: 60px; line-height: 130px; font-weight: 550; 
+    margin-bottom: 0px; margin-top: 0px; text-align: center; text-shadow: 0 1px 1px #fff; }
+
+    .header .patient-name h2 {
+    margin-left: 20px;
+    font-size: 40px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    }
+
+      .doc-img {
+    
+        height: 100px;
+        width: 100px;
+        margin-top: -20px;
+        margin-left: -10px;
+       
+      }
+
+    p{
+        margin-top: 12px;
+        margin-bottom: 1rem;
+    }
+
+
+
+.prescription-btn{
+    float:right;
+    /*background-color: white;*/
+    margin-top: 45px;
+    margin-right: 5%;
+
+}
+
+
+    .prescription-btn button {
+    font-size: 16px;
+    color: black;
+    padding: 8px 15px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffbb33;
+    }
+
+.prescription-btn button:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 1px 2px rgba(0, 0 ,0, 0.8);
+}
+
+    </style>
+</head>
+<body>
+    
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="">Project Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'Home:Home'%}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'Doctor:Profile' %}">Update Profile</a>
+                <a class="nav-item nav-link" href="{% url 'Doctor:PatientRequests' %}">Patient Requests</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'Doctor:Logout' %}">Logout</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+   
+    
+    <div class="overall">
+        <div class="leftmost">
+            <div class="caduceus-sym"></div>
+            <button id="log-out">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+        
+        <!--*****************************************************************************************-->
+        <!--*****************************************************************************************-->
+        
+        <div class="middle-one">
+            
+            <div class="list-of-patients">
+
+            {% for patient in patients %}
+
+                <button id="pat_btn_{{ patient.id }}" onclick='triggerPatientSelected("{{ patient.id }}")'>
+                    <img class="patient-ki-img" src="{{ patient.profile.image.url }}">
+                    <h4>{{ patient.full_name }}</h4>
+                </button>
+
+                {% endfor %}
+                {% comment %} <button>
+                    <div class="patient-ki-img"></div>
+                    <h4>Patient name</h4>
+                </button> {% endcomment %}
+
+                
+                <div class="middle-one-heading">
+                    <h2>Patients</h2>
+                    <input id="search-box" type="search" placeholder="Search">
+                </div>
+            </div>
+        </div>
+
+    {% if patient == None %}
+
+    <div class="rightmost">
+            <div class="header">
+            <h1 id="Hello">Hello, {{ user.full_name }}</h1>
+          <img src="{% static 'images/removed.png' %}" style="display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;">
+  
+            </div>
+    </div>
+
+    {% else %}
+
+        <!--*****************************************************************************************-->
+        <!--*****************************************************************************************-->
+
+        <div class="rightmost">
+            <div class="header">
+                <div class="patient-name">
+                    <img class="rounded-circle account-img" src="{{ patient.profile.image.url }}">
+                     <h2 class="account-heading">{{ patient.full_name }}</h2>
+                </div>
+                <div class="add-btn">
+                    <button id="chat" style="background-color: #FF5163" onclick="triggerUnenroll({{ patient.id }})"><i class="fas fa-user-minus"></i> Unenroll </button>
+                    <button id="update" onclick='triggerPatientLD("{{ patient.id }}")'><i class="fas fa-plus-circle"></i> Update Medical History</button>
+                </div>
+                <div class="nav">
+                    <input type="button" id="btn1" value="Patient Info" onclick="forfirst()">
+                    <input type="button" id="btn2" value="Latest Daignosis" onclick="forsecond()">
+                    <input type="button" id="btn3" value="Prescription" onclick="forthird()">
+                </div>
+            </div>
+    
+            <div class="content1" id="p-info">
+            <div class="doc">
+                <label for="">Doctor</label>
+                <span></span>
+                <div class="doctor">
+                    <div class="icon"><img class="rounded-circle doc-img" src="{{ doc_image }}"></div>
+                    <div class="doctor-name">
+                        <h3>{{ doctor_assigned.doctor.full_name }}</h3>
+                        <p>{{ doctor_assigned.doctor.columbiaasia_doctor.education }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gen-info">
+                <label for="" id="heading2">General Information</label>
+                <span></span>
+                <div class="gen-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+                            <tr>
+                                <td class="data1">Age</td>
+                                <td>{{ patient.patient_medical_history.age }} Years Old</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Gender</td>
+                                <td>{{ patient.patient_medical_history.gender }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Address</td>
+                                <td>{{ patient.patient_medical_history.address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Contact Number</td>
+                                <td>{{ patient.patient_medical_history.contact_no }}</td>                        
+                            </tr>
+                            <tr>
+                                <td class="data1">Emergency Contact</td>
+                                <td>{{ patient.patient_medical_history.emergency_contact }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Height</td>
+                                <td>{{ patient.patient_medical_history.height }} cm</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Weight</td>
+                                <td>{{ patient.patient_medical_history.weight }} kg</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Blood Type</td>
+                                <td>{{ patient.patient_medical_history.blood_group }}</td>
+                            </tr>    
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="med-info">
+                <label for="" id="heading3">Medical Information</label>
+                <span></span>
+                <div class="med-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+
+                            <tr>
+                                <td class="data1">Do I drink?</td>
+                                <td>{{ patient.patient_medical_history.alchohol_consumption }}</td>                        
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Do I Smoke?</td>
+                                <td>{{  patient.patient_medical_history.smoking_habit }}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Previous Illnesses</td>
+                                <td>{{ patient.patient_medical_history.previous_illness }}</td>
+                            </tr>
+
+                            <tr>
+                                <td class="data1">Drug Allergies</td>
+                                <td>{{  patient.patient_medical_history.drug_allergies }}</td>
+                            </tr>
+                           
+                            <tr>
+                                <td class="data1">Current Medications</td>
+                                <td>{{  patient.patient_medical_history.current_medications }}</td>
+                            </tr> 
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+            <!--=================================================================================-->
+    
+            {% comment %} <div class="latest-diagnosis" id="l-diagnosis">
+             <label class="heading-label" for="">Latest Diagnosis</label>
+                <span></span>
+                <div class="report">
+                    <div class="labels"></div>
+                    <label for="">Doctor Name</label>
+                    <input type="text">
+                    <br>
+                    <br>
+                    <label for="">Doctor ID</label>
+                    <input type="text">
+                    <br>
+                    <br>
+                    <label for="">Date & Time</label>
+                    <input type="datetime-local">
+                    <br>
+                    <br>
+                    <label for="">Diagnosis</label>
+                    <input type="text">
+                    <br>
+                    <br>
+                    <label for="">Description</label>
+                    <textarea rowspan="20" colspan="30"></textarea>
+                    <br>
+                    <br>
+                    <label for="">Advice</label>
+                    <textarea rowspan="20" colspan="30"></textarea>
+                    <br>
+                    <br>
+                    <label for="">Addtional Comments</label>
+                    <textarea rowspan="20" colspan="30"></textarea>
+                </div>
+            </div> {% endcomment %}
+
+            <!--=================================================================================-->
+
+             <div class="latest-diagnosis" id="l-diagnosis">
+                <label for="">Latest Diagnosis</label>
+                <div class="Neurology various-depts">
+
+{% if diagnosis != None %}
+
+        {% for diag in diagnosis %}
+    
+                   <div class="first">
+                    <div class="bywhom">
+                        <div class="bywhom-info">
+                            <h4 id="Pat-name">Patient Name<h4>
+                           <p style="font-size: 15px; font-weight:800">{{ diag.patient.full_name }}</p> 
+                            <h4>Doctor Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.doctor.full_name }}</p> 
+
+                            <h4>Timestamp<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.timestamp }}</p> 
+                            <p style="font-size: 12px;">---------</p>
+
+                            <h4>Additional Comments<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ diag.additional_comments }}</p> 
+                        </div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Diagnosis<h4>
+                        <p style="font-size: 20px; margin-left:0px">{{ diag.diagnosis }}</p>
+                        <h4>Description</h4>
+                        <p style="font-size: 20px;"> {{ diag.diagnosis_description }}</p>                        
+                        <h4>Doctor Advice</h4>
+                        <p style="font-size: 20px;">{{ diag.doctor_advice }}</p>
+                    </div>
+                </div>
+
+
+
+                     {% endfor %}
+
+    {% else %}
+  <div class="row">
+        <div class="col-md-10" style="margin-left:110px; margin-top:25px; margin-bottom:25px; ">
+   <div class="alert alert-primary">
+    <p style="font-size: 20px; text-align:center; ">Medical History has not been updated yet.</p>
+    </div>
+    </div>
+    </div>
+
+
+    {% endif %}
+                </div>
+            </div>
+
+             <!--=================================================================================-->
+
+
+            <div class="prescription" id="prescrips">
+             <div class="prescription-btn">
+                    <button id="prescript" style="background-color:#ACC8E5" onclick='triggerPatientPrescription("{{ patient.id }}")'><i class="fas fa-prescription-bottle-alt"></i> Write Prescription</button>
+                </div>
+
+           
+            <label for="">Prescriptions</label> 
+
+            
+                <div class="Neurology various-depts">
+
+               {% if prescriptions != None %}
+
+        {% for prescription in prescriptions %}
+
+                <div class="second">
+                    <div class="bywhom">
+                        <div class="bywhom-info">
+                            <h4 id="Pat-name">Patient Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.patient.full_name }}</p> 
+                            <h4>Doctor Name<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.doctor.full_name }}</p> 
+                            
+                            <h4>Valid Until<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.valid_until}}</p> 
+
+                            <h4>Timestamp<h4>
+                            <p style="font-size: 15px; font-weight:800">{{ prescription.timestamp }}</p> 
+                          
+                           
+                             
+                        </div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Prescription ID<h4>
+                        <p style="font-size: 20px; margin-left:0px">{{ prescription.id }}</p>
+                        <h4>Prescription</h4>
+                        <p style="font-size: 20px;"> {{ prescription.prescription }}</p>
+                        <h4>Additional Advice</h4>
+                        <p style="font-size: 20px;">{{ prescription.additional_advice }}</p>
+                    </div>
+                </div>
+
+
+        {% endfor %}
+
+    {% else %}
+  <div class="row">
+        <div class="col-md-10" style="margin-left:110px; margin-top:25px; margin-bottom:25px; ">
+   <div class="alert alert-danger">
+    <p style="font-size: 20px; text-align:center; ">No Prescriptions yet.</p>
+    </div>
+    </div>
+</div>
+
+
+    {% endif %}
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <script src="{% static 'Doctor-Dashboard.js' %}"></script>
+    </div>
+
+    {% endif %}
+
+ {% include 'snippets/unenroll_patient.html' %}
+
+    <script type=text/javascript>
+
+        function triggerPatientSelected(patient_id){
+            window.location.replace(patient_id);
+			
+		}
+
+        function triggerPatientLD(patient_id){
+            window.location.replace("diagnosis/" + patient_id);
+
+        }
+
+        function triggerPatientPrescription(patient_id)
+        {
+            window.location.replace("prescription/" + patient_id);
+
+
+        }
+    
+        function onPatientUnenrolled(){
+			location.reload();
+		}
+	
+	
+	
+		function triggerUnenroll(patient_id){
+			unenrollPatient(patient_id, onPatientUnenrolled);
+		}
+
+ 
+
+
+
+    </script>
+</body>
+</html>

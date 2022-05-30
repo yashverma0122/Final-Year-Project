@@ -1,0 +1,123 @@
+.slider {
+    margin-top: 120px;
+    /* margin-left: 5%; */
+    position: relative;
+    width: 100%;
+    position: absolute;
+  }
+  .slider__nav-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em 0.5em;
+    text-align: center;
+    /*background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0));*/
+    background: transparent;
+  }
+  .slider__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4em;
+    color: #fff;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+ 
+  .slider__arrow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 1em;
+    height: 1em;
+    border-style: solid;
+    border-width: 4px 0 0 4px;
+  }
+  .slider__arrow_prev {
+    left: 0;
+  }
+  .slider__arrow_prev::before {
+    transform: rotate(-45deg);
+  }
+  .slider__arrow_next {
+    right: 0;
+  }
+  .slider__arrow_next::before {
+    transform: rotate(135deg);
+  }
+  .nav-control {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0.5;
+    width: 1.5em;
+    height: 1.5em;
+    color: #fff;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .nav-control::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .nav-control:hover {
+    opacity: 0.8;
+  }
+  .nav-control_active {
+    opacity: 1;
+  }
+  .slider-list {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 550px;
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100%;
+    list-style-type: none;
+  }
+
+
+
+  .slider-list::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+  .slider-list__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16vw;
+    color: #000;
+    text-shadow: 0 0 50px #000;
+    will-change: transform;
+  }
+  .slider-list__item_active {
+    opacity: 1;
+  }
+  

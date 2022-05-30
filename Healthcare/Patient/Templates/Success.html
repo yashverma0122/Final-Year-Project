@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>You're In!</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'success.css' %}">
+</head>
+<body>
+  <div class="cont">
+    <div class="form sign-in">
+      <h2>Yay! You're In!</h2>
+
+      <img src="{% static 'images/success.png' %}" style="display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;">
+  
+     
+
+    <!-- <button class="submit" onclick="location.href='{% url 'Patient:MedHistoryForm' %}'" type="button">
+        Continue</button> -->
+
+    <a href="{% url 'Patient:MedHistoryForm' %}"><button class="submit">Continue</button></a>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	
+	function unenrollPatient(patient_id, uiUpdateFunction){
+		var url = "{% url 'Doctor:UnenrollPatient' patient_id=53252623623632623 %}".replace("53252623623632623", patient_id)
+		
+        $.ajax({
+			type: 'GET',
+			dataType: "json",
+			url: url,
+			timeout: 5000,
+			success: function(data) {
+				console.log("SUCCESS", data)
+				if(data['response'] == "Unenrolled Successfully."){
+					// ui is updated
+				}
+				else if(data['response'] != null){
+					alert(data['response'])
+				}
+			},
+			error: function(data) {
+				console.error("ERROR...", data)
+				alert("Something went wrong.")
+			},
+			complete: function(data){
+				uiUpdateFunction()
+			}
+		});
+	}
+	
+
+</script>

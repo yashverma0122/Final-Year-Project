@@ -1,0 +1,176 @@
+{% extends "base_requests.html" %}
+{% block content %}
+<style type="text/css">
+	.image-container{
+		max-width: 250px;
+		height: auto;
+	}
+	.field-heading{
+		color: var(--secondary-text-color);
+	}
+	.icon-container:hover {
+		opacity: 0.3;
+		cursor: pointer;
+	}
+	.friends-icon{
+		color: #4287f5;
+		font-size: 40px;
+	}
+	.person-add-icon{
+		color: #4287f5;
+		font-size: 40px;
+	}
+	.friend-text{
+		font-weight: 500;
+		font-size: larger;
+		color: black;
+		padding-right: 15px;
+	}
+	.friends-btn{
+		background-color: #cccccc;
+		border-color: #cccccc;
+		color: #000;
+		font-weight: 500;
+	}
+	.friends-btn:hover {
+		background-color: #bfbfbf;
+		border-color: #bfbfbf;
+	}
+	.dropdown-toggle::after { 
+		content: none; 
+	}
+	.card{
+		border-radius: 12px;
+	}
+	.material-icons{
+		font-size: 30px;
+	}
+	.material-icons:hover{
+		cursor: pointer;
+	}
+	.confirm-friend-request{
+		color: green;
+	}
+	.confirm-friend-request:hover {
+		opacity: 0.3;
+	}
+	.decline-friend-request:hover {
+		opacity: 0.3;
+	}
+	.decline-friend-request{
+		color: red;
+	}
+	.message-btn-text{
+		font-weight: 500;
+		padding-right: 15px;
+	}
+
+	.patient-img {
+    height: 80px;
+    width: 80px;
+    margin-right: 20px;
+    /* margin-bottom: 16px; */
+  }
+</style>
+
+<main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+         
+
+		<div class="content-section" style="font-size: 18px;">
+            <legend class="border-bottom mb-4" style="font-size: 2rem">Patient Requests</legend>
+
+            {% if patient_requests %}
+
+		<div class="row">
+
+		{% for patient in patient_requests %}
+
+		<div class="col-sm-6" style="padding-bottom:25px">
+			<div class="card">
+			<div class="card-body">
+				<span><img class="rounded-circle patient-img" align="left" src="{{ patient.patient.profile.image.url }}"></span>
+				<span class="friend-text align-items-center mr-1">{{ patient.patient.full_name }}</span>
+				<p class="card-text">Age: {{ patient.patient.patient_medical_history.age }} <br> Gender: {{ patient.patient.patient_medical_history.gender }}</p>
+
+				<button class="btn btn-danger" id="pat_btn_decline_{{ patient.id }}" onclick='triggerDeclinePatientRequest("{{ patient.id }}")'>Decline</button>
+				<button class="btn btn-success" id="pat_btn_accept_{{ patient.id }}" onclick='triggerAcceptPatientRequest("{{ patient.id }}")'>Accept</button>
+			</div>
+			</div>
+		</div>
+		{% endfor %}    
+		
+		</div>
+
+			      
+            
+            {% else %}
+            <div class="alert alert-danger">
+                You have no requests pending!
+              </div>
+            {% endif %}
+
+    </div>
+
+
+        </div>
+        <div class="col-md-4">
+          <div class="profile">
+			<div class="media">
+				<img class="rounded-circle account-img" src="{{ image }}">
+				<div class="media-body">
+					<h2 class="account-heading">{{ user.full_name }}</h2>
+					<p class="text-secondary">{{ user.email }}</p>
+				</div>
+			</div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+   
+
+</div>
+
+
+	<script type="text/javascript">
+
+	
+	 
+		function onPatientRequestAccepted(){
+			location.reload();
+		}
+	
+		function onPatientRequestDeclined(){
+			location.reload();
+		}
+	
+	
+		function triggerAcceptPatientRequest(doctor_request_id){
+			acceptPatientRequest(doctor_request_id, onPatientRequestAccepted)
+		}
+	
+		function triggerDeclinePatientRequest(doctor_request_id){
+			declinePatientRequest(doctor_request_id, onPatientRequestDeclined)
+		}
+		
+	</script>
+	
+	{% include 'snippets/accept_patient_request.html' %}
+	{% include 'snippets/decline_patient_request.html' %}
+
+	
+	
+	
+	
+{% endblock content %}
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Patient-Dashboard.css' %}"> 
+    {% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}"/>
+    {% endblock %}
+ 
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="patient-name">
+                <div class="photo"></div>
+                <h2>Patient Name</h2>
+            </div>
+            <div class="add-btn">
+                <!--<label for=""><i class="fas fa-plus-circle"></i> Add New</label>-->
+                <button id="chat"><i class="fas fa-comment-alt"></i> Chat</button>
+                
+                <!-- <button onclick="location.href='{% url 'Patient:Docselection'%}'" type="button" ><i class="fas fa-plus-circle"></i> Add New</button> -->
+                <a href="{% url 'Patient:Docselection' %}"><button><i class="fas fa-plus-circle"></i> Add New</button></a>
+            </div>
+            <div class="nav">
+                <input type="button" id="btn1" value="Patient Info" onclick="forfirst()">
+                <input type="button" id="btn2" value="Latest Daignosis" onclick="forsecond()">
+                <input type="button" id="btn3" value="Prescription" onclick="forthird()">
+            </div>
+        </div>
+
+        <div class="content1" id="p-info">
+            <div class="doc">
+                <label for="">Doctor</label>
+                <span></span>
+                <div class="doctor">
+                    <div class="icon"><i class="fa fa-user-md"></i></div>
+                    <div class="doctor-name">
+                        <h3>Doctor Name</h3>
+                        <p>Qualification</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gen-info">
+                <label for="" id="heading2">General Information</label>
+                <span></span>
+                <div class="gen-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+                            <tr>
+                                <td class="data1">Date of birth</td>
+                                <td>March 9, 1990</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Gender</td>
+                                <td>Male</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Address</td>
+                                <td>Sector 76, House number 5, Noida</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Contact Number</td>
+                                <td>91492XXXXX</td>                        
+                            </tr>
+                            <tr>
+                                <td class="data1">Emergency Contact</td>
+                                <td>91492XXXXX</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Height</td>
+                                <td>180 cm</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Weight</td>
+                                <td>70 kg</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Blood Type</td>
+                                <td>O+</td>
+                            </tr>    
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="med-info">
+                <label for="" id="heading3">Medical Information</label>
+                <span></span>
+                <div class="med-info-table">
+                    <table width="80%" cellspacing="1">
+                        <tbody>
+                            <tr>
+                                <td class="data1">Any Previous Illness</td>
+                                <td>March 9, 1990</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Any Current Allergies</td>
+                                <td>Male</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Any Recent Operation</td>
+                                <td>Sector 76, House number 5, Noida</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Do You Drink Alcohol</td>
+                                <td>91492XXXXX</td>                        
+                            </tr>
+                            <tr>
+                                <td class="data1">Do You Smoke</td>
+                                <td>91492XXXXX</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Any Drug Allergy</td>
+                                <td>180 cm</td>
+                            </tr>
+                            <tr>
+                                <td class="data1">Under any Medication</td>
+                                <td>70 kg</td>
+                            </tr>   
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--=================================================================================-->
+
+        <div class="latest-diagnosis" id="l-diagnosis">
+            <label class="heading-label" for="">Latest Diagnosis</label>
+            <span></span>
+            <div class="report">
+                <div class="givenbyD">
+                    <p class="Doctor-ka-name"><b>By: </b>Dr. ----</p>
+                    <p><b>Date: </b>April 14, 2021</p>
+                </div>
+                <div class="newrep">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Incidunt perferendis vel deserunt consequatur iste recusandae? 
+                    Tempore eos incidunt beatae, magni, omnis eveniet, dolore ducimus minus cum dolorum fuga porro error.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--=================================================================================-->
+
+        <div class="prescription" id="prescrips">
+            <label for="">Prescriptions</label>
+            <span></span>
+            <div class="prescrip1">
+                <div class="givenby">
+                    <p class="Doctor-name"><b>By: </b>Dr. ----</p>
+                    <p><b>Date: </b>April 14, 2021</p>
+                </div>
+                <div class="Pres">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Incidunt perferendis vel deserunt consequatur iste recusandae? 
+                    Tempore eos incidunt beatae, magni, omnis eveniet, dolore ducimus minus cum dolorum fuga porro error.</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="{% static 'Patient-Dashboard.js' %}"></script>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'Patient_Signup.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block signup %}
+    {% crispy form %}
+{% endblock signup %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+    $(document).on('submit', '#id-SignupForm', function(event)
+    {   
+            event.preventDefault();
+            var form_id =  $('#id-SignupForm');
+
+            $.ajax({
+        
+            url: "{% url 'Patient:login' %}",
+            data: form_id.serialize(),
+            type: "POST",
+            dataType: "json",
+            header: {'X-CSRFToken': '{{ csrf_token }}'},
+
+            success: function(response){
+            
+                var success = response['success']
+  
+                if(success){
+                    // alert("Form is valid and user created successfully!");
+                    window.location.href = "{% url 'Patient:Success' %}";
+
+                 }
+  
+                else{
+                    console.log("Response form with errors: " + response['html']);
+                    $("#id-SignupForm").replaceWith(response['html']);
+                }
+  
+            },
+  
+            failure: function(){
+                alert("Error occurred while calling django view!");
+
+            }
+            
+
+            });
+
+    });
+
+    
+  </script>
+
+{% endblock javascript %}

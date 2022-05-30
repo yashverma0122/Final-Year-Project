@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Doctor</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'doctor-Selection.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style type="text/css">
+    .patient-img {
+        height: 100px;
+        width: 100px;
+        margin-left: 35px;
+        margin-top:15px
+        /* margin-right: 20px; */
+        /* margin-bottom: 16px; */
+      }
+
+    .patient-req{
+
+        /* width: 25px; */
+        margin-top: 55px;
+      }
+
+    .btn-primary:hover {
+    color: #fff;
+    background-color: #66b418;
+    border-color: #66b418;
+}
+    .btn-primary {
+        color: #fff;
+        background-color: #5A7995;
+        border-color: #5A7995;
+    }
+
+    .btn-danger{
+        width: 80%;
+    }
+
+
+    </style>
+    
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="">Project Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'Home:Home'%}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'Patient:Dashboard' %}">Dashboard</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'Patient:logout' %}">Logout</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="main">
+
+        <div class="list">
+
+            <div class="Neurology various-depts">
+                <div class="img1"></div>
+                <label for="">Department of Neurology</label>
+
+                {% for obj in neurology %}
+               
+
+                <div class="first">
+                    <div class="bywhom">
+                        <img class="rounded-circle patient-img" src="{{ obj.image.url }}">
+                        <div class="bywhom-info">
+                            <h4>{{ obj.doctor.full_name }}<h4>
+                            <p style="font-size: 12px;">{{ obj.specialization }}</p>
+                        </div>
+                      
+                        {% if doctor_requests and doctor_id == obj.doctor.id %} 
+                    
+                                
+                                <div class="d-flex flex-column align-items-center pt-4">
+                                    <button class="btn btn-danger patient-req" id="cancel_doc_btn_{{ obj.doctor.id }}">
+                                        Cancel Request
+                                    </button>
+                                </div>
+
+
+					    {% else %}
+				
+                        <div class="d-flex flex-column align-items-center pt-4">
+							<button class="btn btn-primary patient-req" id="doc_btn_{{ obj.doctor.id }}">
+								Request
+							</button>
+						</div>
+
+                        {% endif %}
+				
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Overview</h4>
+                        <p>{{ obj.doc_overview }}</p>
+                        <h4>Education</h4>
+                        <p>{{ obj.education }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="Cardiology various-depts">
+                <div class="img2"></div>
+                <label for="">Department of Cardiology</label>
+
+                {% for obj in cardiology %}
+               
+
+                <div class="first">
+                    <div class="bywhom">
+                         <img class="rounded-circle patient-img" src="{{ obj.image.url }}">
+                        <div class="bywhom-info">
+                            <h4>{{ obj.doctor.full_name }}<h4>
+                            <p style="font-size: 12px;">{{ obj.specialization }}</p>
+                        </div>
+                        <!-- <div class="rqst-btn">
+                            <input class="request-btn" type="button" value="Request">
+                        </div> -->
+                        <div class="d-flex flex-column align-items-center pt-4">
+							<button class="btn btn-primary patient-req" id="doc_btn_{{ obj.doctor.id }}">
+								Request
+							</button>
+						</div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Overview</h4>
+                        <p>{{ obj.doc_overview }}</p>
+                        <h4>Education</h4>
+                        <p>{{ obj.education }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+            <div class="Radiology various-depts">
+                <div class="img3"></div>
+                <label for="">Department of Diagnostic Medicine</label>
+
+                {% for obj in diagmed %}
+               
+
+                <div class="first">
+                    <div class="bywhom">
+                         <img class="rounded-circle patient-img" src="{{ obj.image.url }}">
+                        <div class="bywhom-info">
+                            <h4>{{ obj.doctor.full_name }}<h4>
+                            <p style="font-size: 12px;">{{ obj.specialization }}</p>
+                        </div>
+                        <!-- <div class="rqst-btn">
+                            <input class="request-btn" type="button" value="Request">
+                        </div> -->
+                        <div class="d-flex flex-column align-items-center pt-4">
+							<button class="btn btn-primary patient-req" id="doc_btn_{{ obj.doctor.id }}">
+								Request
+							</button>
+						</div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Overview</h4>
+                        <p>{{ obj.doc_overview }}</p>
+                        <h4>Education</h4>
+                        <p>{{ obj.education }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+            <div class="Oncology various-depts">
+                <div class="img4"></div>
+                <label for="">Department of Oncology</label>
+                
+                {% for obj in oncology %}
+               
+
+                <div class="first">
+                    <div class="bywhom">
+                         <img class="rounded-circle patient-img" src="{{ obj.image.url }}">
+                        <div class="bywhom-info">
+                            <h4>{{ obj.doctor.full_name }}<h4>
+                            <p style="font-size: 12px;">{{ obj.specialization }}</p>
+                        </div>
+                        <!-- <div class="rqst-btn">
+                            <input class="request-btn" type="button" value="Request">
+                        </div> -->
+                        <div class="d-flex flex-column align-items-center pt-4">
+							<button class="btn btn-primary patient-req" id="doc_btn_{{ obj.doctor.id }}">
+								Request
+							</button>
+						</div>
+                    </div>
+                    <span></span>
+                    <div class="paragraph">
+                        <h4>Overview</h4>
+                        <p>{{ obj.doc_overview }}</p>
+                        <h4>Education</h4>
+                        <p>{{ obj.education }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+    
+
+
+    <script type="text/javascript">
+
+        // called from base_js.html
+        //preloadImage("{{profile_image|safe}}", 'id_profile_image')
+    
+        function onFriendRequestSent(){
+            location.reload();
+        }
+    
+        function onFriendRequestCancelled(){
+            location.reload();
+        }
+        
+    
+        
+      
+
+    </script>
+    
+    {% include 'snippets/send_doctor_request.html' %}
+    {% include 'snippets/cancel_doctor_request.html' %}
+
+
+
+    {% for doc in doctors %}
+
+    <script type="text/javascript">
+    
+    
+    var sendDoctorRequestBtn_{{doc.doctor.id}} = document.getElementById("doc_btn_{{ doc.doctor.id }}")
+        if (sendDoctorRequestBtn_{{doc.doctor.id}} != null){
+            sendDoctorRequestBtn_{{doc.doctor.id}}.addEventListener("click", function(){
+                sendDoctorRequest("{{doc.doctor.id}}", onFriendRequestSent)
+                // alert("It Worked!");
+            })
+        }
+
+        var cancelDoctorRequestBtn_{{doc.doctor.id}} = document.getElementById("cancel_doc_btn_{{ doc.doctor.id }}")
+        if(cancelDoctorRequestBtn_{{doc.doctor.id}} != null){
+            cancelDoctorRequestBtn_{{doc.doctor.id}}.addEventListener("click", function(){
+                cancelDoctorRequest("{{doc.doctor.id}}", onFriendRequestCancelled)
+            })
+        }
+    
+    
+    </script>
+
+    {% endfor %}
+
+    
+
+   
+
+</body>
+</html>

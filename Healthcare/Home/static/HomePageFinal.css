@@ -1,0 +1,679 @@
+*{
+    font-family: 'Airbnb Cereal App Book', sans-serif;
+}
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color:  #eff5f5;
+}
+
+.upper{
+    width: 100%;
+    height: 770px;
+    background-color: #0d0d0d;
+    position: relative;
+}
+
+.navigation{
+    width: 100%;
+    height: 70px;
+    /*background-color: cornsilk;*/
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    margin-top: 20px;
+    background:url(images/create_thumb.png);
+    background-size: 100% 100%;
+    border-radius: 50%;
+    position: absolute;
+    float: left;
+    margin-left: 70px;
+}
+
+.nav-btn-set1{
+    width: fit-content;
+    height: auto;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    /*background-color:darkolivegreen;*/
+    margin-top: 40px;
+    display: flex;
+}
+
+.nav-btn-set1 a{
+    font-size: 20px;
+    margin:0 10px;
+    padding: 5px 20px;
+    background: transparent;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-btn-set1 a:hover{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-details{
+    width: 200px;
+    height: auto;
+    /*background-color: darkolivegreen;*/
+    float: right;
+    margin-top: 45px;
+    margin-right: 50px;
+}
+
+.contact-details button{
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    outline: none;
+    background:transparent;
+}
+
+.contact-details button:hover{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.header-line{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    /*background: violet;*/
+}
+
+.header-line h2{
+    font-size: 30px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/*=============================================================================*/
+
+.lower{
+    width: 100%;
+    height: auto;
+    /*background-color:chocolate;*/
+    position: relative;
+}
+
+.btns{
+    width: 100%;
+    height: 520px;
+    margin-top: 80px;
+    /*background-color: darksalmon;*/
+    position: relative;
+}
+
+.first{
+    width: 30%;
+    height: 400px;
+    /*background-color: rgba(60, 105, 151, 0.8);*/
+    float: left;
+    margin-left: 2.5%;
+    margin-top: 20px;
+    position: absolute;
+    border-radius: 20px;
+    cursor: pointer;
+    /*box-shadow:  0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);*/
+}
+
+.second{
+    width: 30%;
+    height: 400px;
+    /*background-color: rgba(217, 246, 121, 0.8);*/
+    margin-left: 35%;
+    margin-right: 30%;
+    margin-top: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: absolute;
+   /* box-shadow:  0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);*/
+}
+
+
+.third{
+    width: 30%;
+    height: 400px;
+    /*background-color: rgba(2, 161, 150, 0.8);*/
+    margin-top: 20px;
+    margin-left: 67.5%; 
+    border-radius: 20px;
+    cursor: pointer;
+    position: absolute;
+    /*box-shadow:  0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);*/
+}
+
+.front,.back{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform .6s linear;
+    transition-delay: 0.3s;
+    border-radius: 20px;
+  }
+
+.first .front{
+    background-image: url(images/pexels-photo-3279209.jpeg);
+    background-size: 100% 100%;
+}
+
+.second .front{
+    background-image: url(images/photo-1551601651-2a8555f1a136.png);
+    background-size: 100% 100%;
+}
+
+.third .front{
+    background-image: url(images/photo-1519494026892-80bbd2d6fd0d.png);
+    background-size: 100% 100%;
+}
+
+
+  .front{
+    transform: perspective(600px) rotateY(0deg);
+  }
+  .back{
+    background: #f1f1f1;
+    transform: perspective(600px) rotateY(180deg);
+  }
+  
+.content-back{
+    color: #1e262e;
+    text-align: center;
+    width: 100%;
+  }
+
+.first .back{
+    background-color: rgba(60, 105, 151, 0.8);
+}
+
+.second .back{
+    background-color: rgba(217, 246, 121, 0.8);
+}
+
+.third .back{
+    background-color: rgba(2, 75, 70, 0.7);;
+}
+
+  .content-back h2{
+      margin-top: 50px;
+  }
+
+  .content-back i{
+      color: #2c3e50;
+  }
+
+.submit{
+      font-size: 16px;
+      width: 30%;
+      border: none;
+      outline: none;
+      border-radius: 30px;
+      padding: 5px 10px;
+      margin-top: 15px;
+      color: white;
+      background-color: #f08700;
+  }
+
+  .first:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+  }
+  .first:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+  .second:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+  }
+  .second:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+  .third:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+  }
+  .third:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+  }
+
+.questions{
+    width: 100%;
+    height: 100px;
+    /*background-color: #f08700;*/
+    position: absolute;
+    bottom: 0;
+}
+
+.questions-patient h2{
+    width: 30%;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-left: 2.5%;
+    position: absolute;
+    line-height: 10px;
+}
+
+.questions-doctor h2{
+    width: 30%;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-left: 35%;
+    position: absolute;
+    line-height: 10px;
+}
+
+.questions-hospital h2{
+    width: 30%;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-left: 67.5%;
+    position: absolute;
+    line-height: 10px;
+}
+
+/*Features Section=======================================================================================================*/
+.features{
+    width: 100%;
+    height: 650px;
+    /*background-color: darkseagreen;*/
+}
+
+.features-heading{
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    font-size: 24px;
+    position: absolute;
+    margin-top: 5px;
+    /*background-color:cornflowerblue;*/
+}
+
+.features-cont{
+    width: 100%;
+    height: 550px;
+    margin-top: 85px;
+    /*margin-left: 3%;*/
+    position: absolute;
+    background-image: url(images/nastuh-abootalebi-eHD8Y1Znfpk-unsplash.jpg);
+    background-size: 100% 100%;
+    /*border-radius: 20px;*/
+    /*box-shadow:  0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#start{
+    margin-left: 30px;
+}
+#end{
+    margin-right: 40px;
+}
+
+.features-cont .feature-box{
+    width: 300px;
+    height: 390px;
+    position: relative;
+    margin-top:70px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding-top: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    box-shadow: 0px 5px 15px rgba(37, 37, 37, 0.9);
+    overflow: hidden;
+    text-align: center;
+    cursor:pointer;
+}
+
+.features-cont .feature-box .feature-icon{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 1s;
+}
+
+.features-cont .feature-box:nth-child(1) .feature-icon{
+    box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.8);
+    background: rgba(233, 30, 99, 0.8);
+}
+.features-cont .feature-box:nth-child(1):hover .feature-icon{
+    box-shadow: 0 0 0 400px rgba(233, 30, 99, 0.8);
+}
+
+.features-cont .feature-box:nth-child(2) .feature-icon{
+    box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.8);
+    background: rgba(33, 150, 243, 0.8);
+}
+.features-cont .feature-box:nth-child(2):hover .feature-icon{
+    box-shadow: 0 0 0 400px rgba(33, 150, 243, 0.8);
+}
+
+.features-cont .feature-box:nth-child(3) .feature-icon{
+    box-shadow: 0 0 0 0 rgba(35, 230, 41, 0.8);
+    background: rgba(35, 230, 41, 0.8);
+}
+.features-cont .feature-box:nth-child(3):hover .feature-icon{
+    box-shadow: 0 0 0 400px rgba(35, 230, 41, 0.8);
+}
+
+.features-cont .feature-box:nth-child(4) .feature-icon{
+    box-shadow: 0 0 0 0 rgba(255, 255, 102, 0.8);
+    background: rgba(255, 255, 102, 0.8);
+}
+.features-cont .feature-box:nth-child(4):hover .feature-icon{
+    box-shadow: 0 0 0 400px rgba(255, 255, 102, 0.8);
+}
+
+.features-cont .feature-box .feature-content{
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 100px;
+    z-index: -20px;
+    transition: 0.5s;
+}
+.features-cont .feature-box .feature-content p{
+    font-size: 14px;
+}
+.features-cont .feature-box:hover .feature-content{
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+}
+/*pricing table section===========================================================================================*/
+.pricing{
+    width: 100%;
+    height: 660px;
+    margin-top: 20px;
+    /*background-color:white;*/
+}
+
+.pricing-heading{
+    height: 70px;
+    width: 100%;
+    /*background:tan;*/
+    position: absolute;
+}
+.pricing-heading h2{
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
+}
+
+.pricing-table{
+    width: 94%;
+    height: 610px;
+    margin-top: 20px;
+    margin-left: 3%;
+    position: absolute;
+    /*background:greenyellow;*/
+    border-radius: 20px;
+    /*box-shadow:  0 19px 38px rgba(0, 0, 0, 1), 0 15px 15px rgba(0, 0, 0, 0.22);*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pricing-table .pricing-card{
+    width: 25%;
+    height: 500px;
+    position: absolute;
+    margin-top:90px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding-top: 10px;
+    background-image: linear-gradient(#668cff,#adebad);
+    color: white;
+    /*box-shadow: 0px 5px 15px rgba(37, 37, 37, 0.9);*/
+    overflow: hidden;
+    text-align: center;
+    cursor:pointer;
+    transition: 0.5s;
+}
+
+.pricing-table .pricing-card i{
+    width: 80px;
+    height: 80px;
+    position: relative;
+    color: #fff;
+    /*background-image: linear-gradient(#f12711,#f5af19);*/
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: 1s;
+}
+
+.pricing-table .pricing-card .pricing-card-header{
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.pricing-table .pricing-card .price{
+    font-size:40px;
+    letter-spacing: 1px;
+}
+
+.price sup, .price span{
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+#first-card{
+    margin-left: 9%
+}
+
+#second-card{
+    margin-left: 37%;
+}
+
+#third-card{
+    margin-left: 65%;
+}
+
+.pricing-table .pricing-card:hover{
+    transform: scale(1.1);
+}
+
+.pricing-table .pricing-card ul{
+    list-style: none;
+    margin-left: 46%;
+    margin-top: 50px;
+    transform: translateX(-50%);
+}
+
+.pricing-table .pricing-card li{
+    font-size: 18px;
+    line-height: 30px;
+}
+
+/*About-Us section===================================================================================================*/
+.aboutus{
+    width: 100%;
+    height: 700px;
+    background-image: url(images/pexels-alex-azabache-4039921.jpg);
+    background-size: 100% 100%;
+    margin-bottom: 30px;
+}
+
+.aboutus-blurimage{
+    width: 100%;
+    height: 100%;
+    /*background: rgba(60, 105, 151, 0.4);*/
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.aboutus-blurimage h1{
+    width: 100%;
+    font-size: 50px;
+    position: absolute;
+    text-align: center;
+    margin-top: 30px;
+    color: #00004d;
+    letter-spacing: 1.5px;    
+}
+
+#first-ptag{
+    margin-top: 120px;
+}
+
+.aboutus-blurimage p{
+    margin-left: 10%;
+    width: 80%;
+    color: #000033;
+}
+
+.aboutus-blurimage ul{
+    margin-left: 11%;
+    width: 79%;
+    color: #000033;
+}
+
+/*footer section===================================================================================================*/
+.footer{
+    width: 100%;
+    height: 100px;
+    background: #1a1a1a;
+}
+
+.phone{
+    height:60px;
+    width: auto;
+    margin-top: 20px;
+    margin-left: 42%;
+    /*background-color: tomato;*/
+    position: absolute;
+}
+#phone{
+    size: 14px;
+    border-radius: 30px;
+    padding: 7px 7px;
+    color:  rgba(245, 245, 245, 0.9);;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background:black;
+}
+
+.span-bottom{
+    height: 60px;
+    width: 1px;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 20px;
+    background:  rgba(245, 245, 245, 0.9);
+}
+
+.email{
+    height:60px;
+    width: auto;
+    margin-top: 20px;
+    margin-left:52% ;
+    /*background-color: tomato;*/
+    position: absolute;
+}
+
+#email{
+    size: 14px;
+    border-radius: 30px;
+    padding: 7px 7px;
+    color:  rgba(245, 245, 245, 0.9);;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background:black;
+}
+
+.icon-text{
+    font-size: 16px;
+    color:  rgba(245, 245, 245, 0.9);;
+    margin-top: 12px;
+}
+
+#copyright{
+    position: absolute;
+    left: 10px;
+    margin-top: 40px;
+    color: rgba(245, 245, 245, 0.9);
+}
+@font-face {
+    font-family: 'Airbnb Cereal App Book';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Book'), url('font/AirbnbCerealBook.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Airbnb Cereal App Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Light'), url('font/AirbnbCerealLight.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Airbnb Cereal App Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Medium'), url('font/AirbnbCerealMedium.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Airbnb Cereal App Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Bold'), url('font/AirbnbCerealBold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Airbnb Cereal App Extra Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Extra Bold'), url('font/AirbnbCerealExtraBold.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Airbnb Cereal App Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Airbnb Cereal App Black'), url('font/AirbnbCerealBlack.woff') format('woff');
+    }

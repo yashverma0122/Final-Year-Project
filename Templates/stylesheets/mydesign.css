@@ -1,0 +1,259 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.main{
+    width: 100%;
+    height: 1000px;
+    background: url(../myimages/Homepage-Background.jpg);
+    background-size: 100% 100%;
+    /*background-color: coral;*/
+    margin: 0%;
+    padding: 0%;
+    position: relative;
+}
+
+.navigation-bar{
+    width: 100%;
+    height: 150px;
+    /*background-color: #b2edc5;*/
+    position: absolute;
+    border-bottom: 2px solid black;
+}
+
+.logo{
+    width: 8%;
+    height: 100px;
+    margin-left: 30px;
+    margin-top: 22px;
+    position: absolute;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.logoname{
+    width: 10%;
+    height: 80px;
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 35px;
+    text-align: center;
+}
+.logoname h2{
+    letter-spacing: 4px;
+   
+}
+.logoname h5{
+    letter-spacing: 3px;
+    margin-top: -20px;
+}
+
+.buttons{
+    width: auto;
+    height: auto;
+    /*background-color: darkblue;*/
+    position: absolute;
+    margin-top: 95px;
+    right: 0px;
+}
+
+.buttons button{
+    color: white;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    /*text-decoration: underline solid white;*/
+    background:none;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+.buttons button:hover{
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.slider{
+    width: 100%;
+    height: 600px;
+    /*background-color: greenyellow;*/
+    position: absolute;
+    margin-top: 150px;
+}
+
+.slider1, .slider2, .slider3, .slider4{
+    width: 100%;
+    height: 100%;
+    /*background-color: hotpink;*/
+    position: absolute;
+    padding-left: 0.15%;
+    padding-top: 0.1%;
+}
+
+img{
+    width: 99.5%;
+    height: 99%;
+    /*margin-top: 0.5%;
+    margin-left: 0.25%;*/
+    position: absolute;
+    animation: zoom-out 3s infinite;
+    box-shadow: 1px 1px 10px black;
+}
+@keyframes zoom-out{
+    100%{
+        width 100%;
+    }
+}
+
+.text-content{
+    width: 43%;
+    height: 40%;
+    /*background: rgba(150, 150, 150, 0.5);*/
+    position:absolute;
+    margin-left: 40px;
+    margin-top: 8%;
+    animation: textup 12s linear infinite;
+    transform: translateY(100px);
+}
+
+.text-content h1{
+    background: rgba(150, 150, 150, 0.3);
+    line-height: 3rem;
+    letter-spacing: 4px;
+}
+
+.text-content p{
+    padding: 5px;
+    font-size: 18px;
+}
+
+.text-content span{
+    height: 1.5px;
+    width: 40%;
+    background-color: red;
+    position: absolute;
+}
+
+.button-panel{
+    width: 100%;
+    height: 400px;
+    position: relative;
+    top: 750px;
+    background-color:tomato;
+}
+
+.slider1{
+    animation: slide1 12s infinite linear;
+}
+.slider2{
+    animation: slide2 12s infinite linear;
+} 
+.slider3{
+    animation: slide3 12s infinite linear;
+} 
+.slider4{
+    animation: slide4 12s infinite linear;
+} 
+
+@keyframes slide1{
+    0%{
+        visibility:visible;
+    }
+    25%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:hidden;
+    }
+    75%{
+        visibility:hidden;
+    }
+    100%{
+        visibility:visible;
+    }
+}
+
+@keyframes slide2{
+    0%{
+        visibility:hidden;
+    }
+    25%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:visible;
+    }
+    75%{
+        visibility:hidden;
+    }
+    100%{
+        visibility:hidden;
+    }
+}
+
+@keyframes slide3{
+    0%{
+        visibility:hidden;
+    }
+    25%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:hidden;
+    }
+    75%{
+        visibility:visible;
+    }
+    100%{
+        visibility:hidden;
+    }
+}
+
+@keyframes slide4{
+    0%{
+        visibility:hidden;
+    }
+    25%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:hidden;
+    }
+    75%{
+        visibility:hidden;
+    }
+    100%{
+        visibility:visible;
+    }
+}
+
+@keyframes textup{
+    10%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.text-content1{
+    animation-delay: 0s;
+}
+.text-content2{
+    animation-delay: 3s;
+}
+.text-content3{
+    animation-delay: 6s;
+}
+.text-content4{
+    animation-delay: 9s;
+}
+
